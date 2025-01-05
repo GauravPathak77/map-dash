@@ -166,3 +166,23 @@ a.secondary {
     filter: invert();
   }
 }
+
+
+.map-container {
+  width: 100%;
+  height: 500px; /* Set a fixed height for the map */
+  position: relative;
+}
+
+/* styles/globals.css or a specific component CSS file */
+
+.red-flag-icon .red-flag {
+  width: 20px;
+  height: 30px;
+  background-color: red;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%, 0 40%, 60% 40%, 60% 60%, 0 60%);
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: rotate(45deg); /* Make it a flag-like shape */
+}
