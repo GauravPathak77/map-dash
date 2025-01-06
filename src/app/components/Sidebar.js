@@ -42,7 +42,7 @@ const Sidebar = ({ elements, onElementClick }) => {
               e.target.style.transform = "scale(1)";
             }}
           >
-            {element.Object} {element.Name} {element.Time}
+            Cam {element.CameraID} {element.Name} {element.Date} {element.Time}
           </li>
         ))}
       </ul>
