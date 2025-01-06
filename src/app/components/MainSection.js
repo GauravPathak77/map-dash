@@ -2,7 +2,7 @@ import React from "react";
 import Circle from "./Circle";
 import DialogBox from "./DialogBox";
 
-const MainSection = ({ elements, circles, activeIndex, onCircleClick }) => {
+const MainSection = ({ elements, circles, activeIndex }) => {
   return (
     <div
       style={{
@@ -16,13 +16,13 @@ const MainSection = ({ elements, circles, activeIndex, onCircleClick }) => {
     >
       {circles.map((circle, index) => (
         <div key={index}>
-          <Circle
-            onClick={() => onCircleClick(index)}
-            style={{ top: circle.y, left: circle.x }}
-          />
+          <Circle style={{ top: circle.y, left: circle.x }} />
           <DialogBox
-            isVisible={activeIndex === index}
-            data={elements[index]}
+            isVisible={
+              activeIndex !== null &&
+              elements[activeIndex]?.CameraID === circle.cameraID
+            }
+            data={elements[activeIndex]}
             style={{ top: circle.y + 20, left: circle.x }}
           />
         </div>

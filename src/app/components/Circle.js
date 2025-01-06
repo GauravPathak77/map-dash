@@ -1,9 +1,8 @@
 import React from "react";
 
-const Circle = ({ style, onClick }) => {
+const Circle = ({ style }) => {
   return (
     <div
-      onClick={onClick}
       style={{
         width: "20px",
         height: "20px",
@@ -11,7 +10,6 @@ const Circle = ({ style, onClick }) => {
         border: "1px solid black",
         backgroundColor: "green",
         position: "absolute",
-        cursor: "pointer",
         ...style,
       }}
     />

@@ -1,4 +1,4 @@
-import path from 'path';
+import path from "path";
 import sqlite3 from "sqlite3";
 import { open } from "sqlite";
 
@@ -6,13 +6,12 @@ export const GET = async (req) => {
   try {
     // Open the database connection
     const db = await open({
-        filename: path.resolve(process.cwd(), 'data.db'), // Adjust the path as needed
-        driver: sqlite3.Database,
+      filename: path.resolve(process.cwd(), "data.db"), // Adjust the path as needed
+      driver: sqlite3.Database,
     });
 
     console.log("Hi", db);
-    console.log("Resolved path:", path.resolve(process.cwd(), 'data.db'));
-
+    console.log("Resolved path:", path.resolve(process.cwd(), "data.db"));
 
     // Fetch data from the CameraData table
     const data = await db.all("SELECT * FROM CameraData");
@@ -31,7 +30,15 @@ export const GET = async (req) => {
       Image: row.Image,
     }));
 
-    // Send the formatted data as a JSON response
+    // Sort the formatted data by date and time in descending order
+    formattedData.sort((a, b) => {
+      // Combine Date and Time fields and create Date objects for comparison
+      const dateTimeA = new Date(`${a.Date}T${a.Time}`);
+      const dateTimeB = new Date(`${b.Date}T${b.Time}`);
+      return dateTimeB - dateTimeA; // Descending order
+    });
+
+    // Send the sorted data as a JSON response
     return new Response(JSON.stringify(formattedData), {
       status: 200,
       headers: { "Content-Type": "application/json" },

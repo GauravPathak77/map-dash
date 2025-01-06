@@ -1,18 +1,14 @@
-"use client"
-import styles from "./page.module.css";
+"use client";
 import { useState, useEffect } from "react";
 import Header from "./components/Header";
 import Sidebar from "./components/Sidebar";
 import MainSection from "./components/MainSection";
-
-// const elements = ["Element 1", "Element 2", "Element 3", "Element 4", "Element 5"];
 
 export default function Home() {
   const [elements, setElements] = useState([]);
   const [circles, setCircles] = useState([]);
   const [activeIndex, setActiveIndex] = useState(null);
 
-  // Fetch data from the API on component mount
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -20,8 +16,12 @@ export default function Home() {
         const data = await response.json();
         setElements(data);
 
-        // Generate random positions for circles
-        const generatedCircles = data.map(() => ({
+        // const cameraPos = [{}] 
+
+        // Generate positions for distinct CameraID circles
+        const uniqueCameraIDs = [...new Set(data.map((item) => item.CameraID))];
+        const generatedCircles = uniqueCameraIDs.map((cameraID) => ({
+          cameraID,
           x: Math.random() * (window.innerWidth * 0.7 - 100),
           y: Math.random() * (window.innerHeight - 100),
         }));
@@ -47,7 +47,6 @@ export default function Home() {
           elements={elements}
           circles={circles}
           activeIndex={activeIndex}
-          onCircleClick={handleElementClick}
         />
       </div>
     </div>

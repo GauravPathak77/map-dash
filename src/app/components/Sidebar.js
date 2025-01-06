@@ -6,12 +6,12 @@ const Sidebar = ({ elements, onElementClick }) => {
       style={{
         width: "25%",
         height: "100%",
-        maxHeight: "100vh", // Ensure the sidebar respects the viewport height
-        backgroundColor: "#333", // Dark background for contrast
+        maxHeight: "100vh",
+        backgroundColor: "#333",
         padding: "20px",
         boxShadow: "2px 0 5px rgba(0,0,0,0.2)",
-        overflowY: "auto", // Makes the sidebar scrollable
-        color: "#fff", // White text for readability
+        overflowY: "auto",
+        color: "#fff",
         fontFamily: "'Arial', sans-serif",
       }}
     >
@@ -26,7 +26,7 @@ const Sidebar = ({ elements, onElementClick }) => {
               padding: "12px 15px",
               margin: "10px 0",
               cursor: "pointer",
-              backgroundColor: "#444", // Slightly lighter shade for contrast
+              backgroundColor: "#444",
               border: "1px solid #555",
               borderRadius: "8px",
               textAlign: "center",
@@ -34,7 +34,7 @@ const Sidebar = ({ elements, onElementClick }) => {
             }}
             onClick={() => onElementClick(index)}
             onMouseEnter={(e) => {
-              e.target.style.backgroundColor = "#555"; // Highlight on hover
+              e.target.style.backgroundColor = "#555";
               e.target.style.transform = "scale(1.05)";
             }}
             onMouseLeave={(e) => {
@@ -42,7 +42,7 @@ const Sidebar = ({ elements, onElementClick }) => {
               e.target.style.transform = "scale(1)";
             }}
           >
-            {element.Object} {element.Name}
+            {element.Object} {element.Name} {element.Time}
           </li>
         ))}
       </ul>
