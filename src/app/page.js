@@ -16,14 +16,14 @@ export default function Home() {
         const data = await response.json();
         setElements(data);
 
-        // const cameraPos = [{}] 
+        const cameraPos = [{x: 250, y: 120}, {x: 400, y: 120}, {x: 750, y: 135}, {x: 250, y: 385}, {x: 500, y: 375}] 
 
         // Generate positions for distinct CameraID circles
         const uniqueCameraIDs = [...new Set(data.map((item) => item.CameraID))];
         const generatedCircles = uniqueCameraIDs.map((cameraID) => ({
           cameraID,
-          x: Math.random() * (window.innerWidth * 0.7 - 100),
-          y: Math.random() * (window.innerHeight - 100),
+          x: cameraPos[cameraID-1].x,
+          y: cameraPos[cameraID-1].y,
         }));
         setCircles(generatedCircles);
       } catch (error) {

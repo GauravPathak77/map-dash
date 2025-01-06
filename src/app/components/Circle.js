@@ -8,7 +8,8 @@ const Circle = ({ style }) => {
         height: "20px",
         borderRadius: "50%",
         border: "1px solid black",
-        backgroundColor: "green",
+        backgroundImage: "url('/icon.jpg')",
+        backgroundSize: "cover",
         position: "absolute",
         ...style,
       }}
